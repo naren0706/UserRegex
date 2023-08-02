@@ -6,16 +6,18 @@ namespace UserRegex
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Enter First name, Last name , email");
+            Console.WriteLine("Enter First name, Last name , email,phone number");
             User user = new User()
             {
                 firstName = Console.ReadLine(),
                 lastName = Console.ReadLine(),
-                email= Console.ReadLine()
+                email= Console.ReadLine(),
+                PhoneNumber= Console.ReadLine()
             };
             user.ValidateFirstName();
             user.ValidateLastName();
             user.ValidateEmail();
+            user.ValidatePhonenumber();
         }
     }
 }

@@ -8,7 +8,17 @@ namespace UserRegex
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string email { get;  set; }
+        public string PhoneNumber { get; set; }
 
+        public void ValidatePhonenumber()
+        {
+            string lnameRegex = "^[0-9]{2}[ ]{1}[0-9]{10}$";
+            Regex regex = new Regex(lnameRegex);
+            if (regex.IsMatch(this.PhoneNumber))
+                Console.WriteLine("phone Number is valid");
+            else
+                Console.WriteLine("phone Number not valid");
+        }
         public void ValidateLastName()
         {
             string lnameRegex = "^[A-Z]{1}[a-z]{2,}$";
