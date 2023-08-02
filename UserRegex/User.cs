@@ -13,7 +13,7 @@ namespace UserRegex
 
         public void ValidatePassword()
         {
-            string re = "^(?=.*[A-Z]).+.{8,}$";
+            string re = "^(?=.*[0-9])(?=.*[A-Z]).+.{8,}$";
             Regex regex = new Regex(re);
             if (regex.IsMatch(this.password))
                 Console.WriteLine("password is valid");
