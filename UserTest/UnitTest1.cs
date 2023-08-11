@@ -4,6 +4,8 @@ namespace UserTest
 {
     public class Tests
     {
+        static string TrueEmailFilePath = @"E:\BridgeGateProblems\UserRegex\UserTest\TrueEmail.txt";
+        static string FalseEmailFilePath = @"E:\BridgeGateProblems\UserRegex\UserTest\FalseEmail.txt";
         [Test]
         public void TestFirstName()
         {
@@ -41,10 +43,32 @@ namespace UserTest
             Assert.IsFalse(invalid);
         }
         [Test]
+        public void TestAllTrueEmail()
+        {
+            string[] TrueEmails = { "abc@yahoo.com", "abc-100@yahoo.com", "abc.100@yahoo.com", "abc111@abc.com", "abc-100@abc.com.au", "abc@1.com", "abc@gmail.com.com", "abc+100@gmail.com" };
+            User userReg = new User();
+            foreach (var item in TrueEmails)
+            {
+                bool res = userReg.ValidateEmail(item);
+                Assert.IsTrue(res);
+            }
+        }
+        [Test]
+        public void TestAllFalseEmail()
+        {
+            string[] FalseEmail = File.ReadAllText(FalseEmailFilePath).Split(',');
+            User userReg = new User();
+            foreach (var item in FalseEmail)
+            {
+                bool res = userReg.ValidateEmail(item);
+                Assert.IsFalse(res);
+            }
+        }
+        [Test]
         public void TestPassword()
         {
             User userReg = new User();
-            bool valid = userReg.ValidatePassword("vvdcA876@fsd");
+            bool valid = userReg.ValidatePassword("Naren@12345");
             Assert.IsTrue(valid);
             bool invalid = userReg.ValidatePassword("vuvcuy0SDc");
             Assert.IsFalse(invalid);

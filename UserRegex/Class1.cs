@@ -6,19 +6,11 @@ namespace UserRegex
     public class User
     {
 
-
         public bool ValidatePassword(string password)
         {
             string re = @"^(?=.*[\$\&\+\,\:\;\=\?\@\#\|\'\<\>\.\-\^\*\(\)\%\!])(?=.*[0-9])(?=.*[A-Z]).+.{8,}$";
             Regex regex = new Regex(re);
-            if (regex.IsMatch(password))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return regex.IsMatch(password);
         }
         public bool ValidatePhonenumber(string phoneNumber)
         {
@@ -63,8 +55,8 @@ namespace UserRegex
         }
         public bool ValidateEmail(string email)
         {
-            string re = @"^[^.]([a-z0-9\-+]{0,})[\.]{0,1}([a-z0-9\-+]{1,})(@{1}[a-z0-9]{1,})(\.)([a-z]{0,}[\.]{0,1}[a-z]{2,})]{0,}$";
-            Regex regex = new Regex(re);
+            string emailRegex = @"^[^.]([a-z0-9\-+]{0,})[\.]{0,1}([a-z0-9\-+]{1,})(@{1}[a-z0-9]{1,})(\.)([a-z]{0,}[\.]{0,1}[a-z]{2,})]{0,}$";
+            Regex regex = new Regex(emailRegex);
             if (regex.IsMatch(email))
             {
                 return true;
